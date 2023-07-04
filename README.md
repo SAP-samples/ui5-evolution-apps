@@ -1,41 +1,52 @@
-# SAP-samples/repository-template
-This default template for SAP Samples repositories includes files for README, LICENSE, and .reuse/dep5. All repositories on github.com/SAP-samples will be created based on this template.
+# README
 
-# Containing Files
+> **Note**: The boostrapping mechanism showcased in this repository is still considered to experimental!
 
-1. The LICENSE file:
-In most cases, the license for SAP sample projects is `Apache 2.0`.
+This repository includes two sub-projects. Both projects implement a todo application, but with a different set of UI controls:
 
-2. The .reuse/dep5 file: 
-The [Reuse Tool](https://reuse.software/) must be used for your samples project. You can find the .reuse/dep5 in the project initial. Please replace the parts inside the single angle quotation marks < > by the specific information for your repository.
+* `/app-ui5`
+  * is implemented with basic `sap.m` UI5 controls
+* `/app-ui5-webc`
+  * is implemented with UI5 Web Components
 
-3. The README.md file (this file):
-Please edit this file as it is the primary description file for your project. You can find some placeholder titles for sections below.
+## Basic Setup
 
-# [Title]
-<!-- Please include descriptive title -->
+To run and build the above apps, you also need to checkout [OpenUI5](https://github.com/SAP/openui5).
 
-<!--- Register repository https://api.reuse.software/register, then add REUSE badge:
-[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/REPO-NAME)](https://api.reuse.software/info/github.com/SAP-samples/REPO-NAME)
--->
+The `ui5-workspace.yaml` files in the respective app folders define relative paths to your local OpenUI5 folder, please make sure these paths are correct.
+The predfined paths expect the OpenUI5 folder to reside next to this repository folder.
 
-## Description
-<!-- Please include SEO-friendly description -->
+## Build and Run the Apps
 
-## Requirements
+Please see the respective `README.MD` files in the app folders:
 
-## Download and Installation
+* [app-ui5](./app-ui5/README.MD)
+* [app-ui5-webc](./app-ui5-webc/README.MD)
 
-## Known Issues
-<!-- You may simply state "No known issues. -->
+## Modular Core Boostrap
 
-## How to obtain support
-[Create an issue](https://github.com/SAP-samples/<repository-name>/issues) in this repository if you find a bug or have questions about the content.
- 
-For additional support, [ask a question in SAP Community](https://answers.sap.com/questions/ask.html).
+The new bootstraping mechanism can be activated by using `sap-ui-boot.js` instead of `sap-ui-core.js`.
 
-## Contributing
-If you wish to contribute code, offer fixes or improvements, please send a pull request. Due to legal reasons, contributors will be asked to accept a DCO when they create the first pull request to this project. This happens in an automated fashion during the submission process. SAP uses [the standard DCO text of the Linux Foundation](https://developercertificate.org/).
+In the snippet below we will outline some important differences when using the new `sap-ui-boot.js`.
 
-## License
-Copyright (c) 2023 SAP SE or an SAP affiliate company. All rights reserved. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](LICENSE) file.
+```html
+<script
+    id="sap-ui-bootstrap"
+    src="resources/sap-ui-boot.js"
+    data-sap-ui-modules="[sap/ui/demo/todo/Component-bundle-0], [sap/ui/demo/todo/Component-bundle-1]"
+    data-sap-ui-onInit="sap/ui/demo/todo/App@./">
+</script>
+```
+
+### sapUiModules
+
+The `sapUiModules` config option accepts a comma separated list of modules which should be loaded during bootstrapping, for example the Component preload bundles for your app as specified in the `ui5.yaml`.
+
+> **Note**: Modules that might fail to load can be marked as *optional* by enclosing the module name in brackets.
+> This is commonly the case during development when your bootstrap already contains the productive bundles, but you have not yet build the app.
+
+### sapUiOnInit
+
+The `sapUiOnInit` config option accepts a string value pointing to a UI5 module which will be loaded at the end of the bootstrap.
+
+> **Important**: In order to provide a resource path mapping, you must append the local path after the `@` symbol. In the above sample the `sap/ui/demo/todo` path is thus mapped to the local path `./`.
