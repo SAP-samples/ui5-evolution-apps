@@ -1,0 +1,22 @@
+specVersion: "workspace/1.0"
+metadata:
+    name: default
+dependencyManagement:
+    resolutions:
+        - path: ../../openui5/src/sap.ui.core
+        - path: ../../openui5/src/sap.m
+        - path: ../../openui5/src/themelib_sap_horizon
+        - path: ../../openui5/src/sap.ui.unified
+        - path: ../../openui5/src/sap.ui.layout
+
+---
+specVersion: "workspace/1.0"
+metadata:
+    name: legfree
+dependencyManagement:
+    resolutions:
+        - path: ../../legfree/openui5/src/sap.ui.core
+        - path: ../../legfree/openui5/src/sap.m
+        - path: ../../legfree/openui5/src/themelib_sap_horizon
+        - path: ../../legfree/openui5/src/sap.ui.unified
+        - path: ../../legfree/openui5/src/sap.ui.layout

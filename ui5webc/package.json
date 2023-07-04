@@ -1,0 +1,32 @@
+{
+	"name": "openui5-sample-app",
+	"version": "0.2.0",
+	"description": "Sample of an OpenUI5 app",
+	"private": true,
+	"scripts": {
+		"start": "ui5 serve",
+		"lint": "eslint webapp",
+		"karma": "karma start",
+		"karma-ci": "rimraf coverage && karma start karma-ci.conf.js",
+		"watch": "npm run karma",
+		"test": "npm run lint && npm run karma-ci",
+		"build": "ui5 build -a --clean-dest",
+		"build-app": "ui5 build",
+		"build-themes": "ui5 build -a '--exclude-task=*' --include-task=buildThemes --clean-dest",
+		"build-self-contained": "ui5 build self-contained -a --clean-dest",
+		"serve-dist": "ws --compress --http2 -d dist"
+	},
+	"devDependencies": {
+		"@ui5/cli": "^3.0.6",
+		"eslint": "^8.37.0",
+		"karma": "^6.4.1",
+		"karma-chrome-launcher": "^3.1.1",
+		"karma-coverage": "^2.2.0",
+		"karma-ui5": "^3.0.2",
+		"local-web-server": "^5.3.0",
+		"rimraf": "^4.4.1"
+	},
+	"dependencies": {
+		"@ui5/webcomponents-icons": "^1.14.5"
+	}
+}
