@@ -17,13 +17,13 @@
 		"serve-dist": "ws --compress --http2 -d dist"
 	},
 	"devDependencies": {
-		"@ui5/cli": "^3.0.2",
-		"eslint": "^7.32.0",
-		"karma": "^6.3.12",
-		"karma-chrome-launcher": "^3.1.0",
-		"karma-coverage": "^2.1.0",
-		"karma-ui5": "^2.4.0",
+		"@ui5/cli": "^3.3.1",
+		"eslint": "^8.44.0",
+		"karma": "^6.4.2",
+		"karma-chrome-launcher": "^3.2.0",
+		"karma-coverage": "^2.2.1",
+		"karma-ui5": "^3.0.3",
 		"local-web-server": "^5.3.0",
-		"rimraf": "^3.0.2"
+		"rimraf": "^5.0.1"
 	}
 }
