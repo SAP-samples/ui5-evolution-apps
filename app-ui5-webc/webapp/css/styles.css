@@ -1,48 +1,48 @@
 .title {
-    margin: 1em 0 1.5em 0;
-    text-align: center;
+	margin: 1em 0 1.5em 0;
+	text-align: center;
 }
 
 .searchbar, .content {
-    margin: 1em;
+	margin: 1em;
 }
 
 .searchbar {
-    display: flex;
+	display: flex;
 }
 
 .searchbar > * {
-    vertical-align: bottom;
-    margin-left: 1em;
+	vertical-align: bottom;
+	margin-left: 1em;
 }
 
 .searchbar > :first-child {
-    flex-grow: 1;
-    margin-left: 0;
+	flex-grow: 1;
+	margin-left: 0;
 }
 
 .todoItems {
-    display: flex;
-    height: 2.5em;
+	display: flex;
+	height: 2.5em;
 }
 
 .todoItems > :not(:first-child) {
-    vertical-align: bottom;
-    margin-left: 1em;
+	vertical-align: bottom;
+	margin-left: 1em;
 }
 
 .todoItems > :nth-child(2) {
-    flex-grow: 1;
+	flex-grow: 1;
 }
 
 .todoItems > :last-child {
-    margin-right: 1em;
+	margin-right: 1em;
 }
 
 .dialogTodoInput {
-    width: 100%;
+	width: 100%;
 }
 
 .dialogCloseButton {
-    margin: 0.5em;
+	margin: 0.5em;
 }
