@@ -7,4 +7,4 @@ sap.ui.require([
 		name: "sap.ui.demo.todo",
 		manifest: true
 	}).placeAt("content");
-},function(oError) {console.log(oError);});
+}, function(oError) {console.log(oError);});
