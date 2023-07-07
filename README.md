@@ -1,4 +1,4 @@
-# README
+# Sample apps for ongoing UI5 Evolution activities
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/ui5-evolution-apps)](https://api.reuse.software/info/github.com/SAP-samples/ui5-evolution-apps)
 
 > **Note**: The boostrapping mechanism showcased in this repository is still considered experimental!
