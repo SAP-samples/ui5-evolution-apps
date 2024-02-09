@@ -1,37 +1,36 @@
 <mvc:View
     controllerName="sap.ui.demo.todo.controller.App"
     displayBlock="true"
-    xmlns="sap.ui.webc.main"
+    xmlns:webc="sap.ui.demo.todo.control"
+    webc:import="@ui5/webcomponents/dist"
     xmlns:mvc="sap.ui.core.mvc"
 	xmlns:core="sap.ui.core"
     xmlns:html="http://www.w3.org/1999/xhtml"
     core:require="{'iconAdd': 'sap/ui/webc/common/thirdparty/icons/add', 'iconDelete':'sap/ui/webc/common/thirdparty/icons/delete', 'iconEdit':'sap/ui/webc/common/thirdparty/icons/edit'}">
 
-    <Title class="title" text="{i18n>app_title}"/>
+    <webc:Title class="title" text="{i18n>app_title}"/>
 
     <html:div class="searchbar">
-        <Input id="newTodo" value="{/newTodo}" change=".addTodo" placeholder="{i18n>todo_input_placeholder}"/>
-        <Button text="{i18n>todo_button_add}" design="Emphasized" click=".addTodo" icon="add"/>
+        <webc:Input id="newTodo" value="{/newTodo}" change=".addTodo" placeholder="{i18n>todo_input_placeholder}"/>
+        <webc:Button text="{i18n>todo_button_add}" design="Emphasized" click=".addTodo" icon="add"/>
     </html:div>
 
     <html:div class="content">
-        <List items="{/todos}">
-            <CustomListItem class="todoItems">
-                <CheckBox checked="{completed}" change=".completeTodo"/>
-                <Label text="{title}"/>
-                <Button icon="edit" click=".editTodo"/>
-                <Button icon="delete" design="Negative" click=".deleteTodo"/>
-            </CustomListItem>
-        </List>
+        <webc:List default="{/todos}">
+            <webc:CustomListItem class="todoItems">
+                <webc:CheckBox checked="{completed}" change=".completeTodo"/>
+                <webc:Label text="{title}"/>
+                <webc:Button icon="edit" click=".editTodo"/>
+                <webc:Button icon="delete" design="Negative" click=".deleteTodo"/>
+            </webc:CustomListItem>
+        </webc:List>
     </html:div>
 
-    <Dialog id="editDialog" headerText="{i18n>todo_dialog_edit_header}">
-        <content>
-            <Input value="{title}" id="editTodo" class="dialogTodoInput" change=".closeEdit"/>
-        </content>
-        <footer>
-            <Button class="dialogCloseButton" design="Emphasized" text="{i18n>todo_dialog_close_button}" click=".closeEdit"/>
-        </footer>
-    </Dialog>
+    <webc:Dialog id="editDialog" headerText="{i18n>todo_dialog_edit_header}">
+        <webc:Input value="{title}" id="editTodo" class="dialogTodoInput" change=".closeEdit"/>
+        <!--footer>
+            <webc:Button class="dialogCloseButton" design="Emphasized" text="{i18n>todo_dialog_close_button}" click=".closeEdit"/>
+        </footer-->
+    </webc:Dialog>
 
 </mvc:View>

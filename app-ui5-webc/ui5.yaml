@@ -10,6 +10,11 @@ framework:
     - name: sap.ui.webc.main
     - name: themelib_sap_horizon
 builder:
+  customTasks:
+    - name: ui5-tooling-modules-task
+      afterTask: replaceVersion
+      configuration:
+        addToNamespace: true
   bundles:
   - bundleDefinition:
       name: sap/ui/demo/todo/Component-bundle.js
@@ -25,8 +30,6 @@ builder:
         - ui5loader-autoconfig.js
         - ui5loader.js
         - sap/ui/core/theming/ThemeManager.js
-        - sap/ui/core/date/
-        - sap/ui/events/jquery/EventSimulation.js
         resolve: true
       - mode: preload
         filters:
@@ -34,6 +37,8 @@ builder:
         - sap/ui/demo/todo/
         - sap/ui/core/Popup.js
         - sap/ui/dom/rect.js
+        - sap/ui/core/LocaleData.js
+        - sap/ui/core/date/CalendarUtils.js
         resolve: true
         resolveConditional: false
         sort: true
@@ -68,3 +73,7 @@ builder:
       optimize: true
       usePredefineCalls: true
       numberOfParts: 1
+server:
+  customMiddleware:
+    - name: ui5-tooling-modules-middleware
+      afterMiddleware: compression

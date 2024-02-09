@@ -4,7 +4,8 @@
 	"description": "Sample of an OpenUI5 app",
 	"private": true,
 	"scripts": {
-		"start": "ui5 serve",
+		"start": "ui5 serve --port 8000 --h2 -o index.html",
+		"start:dist": "npm start -- --config ui5-dist.yaml",
 		"lint": "eslint webapp",
 		"karma": "karma start",
 		"karma-ci": "rimraf coverage && karma start karma-ci.conf.js",
@@ -24,9 +25,11 @@
 		"karma-coverage": "^2.2.1",
 		"karma-ui5": "^3.0.3",
 		"local-web-server": "^5.3.0",
-		"rimraf": "^5.0.1"
+		"rimraf": "^5.0.1",
+		"ui5-tooling-modules": "^3.3.3"
 	},
 	"dependencies": {
-		"@ui5/webcomponents-icons": "^1.14.5"
+		"@ui5/webcomponents": "^1.22.0",
+		"@ui5/webcomponents-icons": "^1.22.0"
 	}
 }
