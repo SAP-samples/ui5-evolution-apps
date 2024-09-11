@@ -1,0 +1,7 @@
+specVersion: "workspace/1.0"
+metadata:
+    name: default
+dependencyManagement:
+    resolutions:
+        - path: ../../openui5/src/sap.ui.core
+        - path: ../../openui5/src/themelib_sap_horizon

@@ -1,0 +1,65 @@
+specVersion: '3.0'
+metadata:
+  name: openui5-sample-app
+type: application
+framework:
+  name: OpenUI5
+  version: "2.0.0"
+  libraries:
+    - name: sap.ui.core
+    - name: themelib_sap_horizon
+builder:
+  bundles:
+  - bundleDefinition:
+      name: sap/ui/demo/todo/Component-bundle.js
+      defaultFileTypes:
+      - ".js"
+      - ".json"
+      - ".xml"
+      - ".properties"
+      - ".css"
+      sections:
+      - mode: provided
+        filters:
+          - ui5loader-autoconfig.js
+          - ui5loader.js
+
+          - sap/base/
+          - sap/ui/base/
+          - sap/ui/core/
+          - sap/ui/dom/
+          - sap/ui/debug/
+          - sap/ui/performance/
+          - sap/ui/events/
+          - sap/ui/thirdparty/
+          - sap/ui/model/
+          - sap/ui/security/
+          - sap/ui/util/
+        resolve: true
+        resolveConditional: false
+      - mode: preload
+        filters:
+          - sap/ui/demo/todo/
+        resolve: true
+        resolveConditional: false
+        sort: true
+    bundleOptions:
+      optimize: true
+      usePredefineCalls: true
+      numberOfParts: 1
+  customTasks:
+    - name: ui5-tooling-modules-task
+      beforeTask: replaceVersion
+      configuration:
+        addToNamespace: true
+server:
+  customMiddleware:
+    - name: ui5-tooling-modules-middleware
+      afterMiddleware: compression
+      configuration:
+        debug: true
+        persistentCache: false
+    - name: "@ui5/middleware-code-coverage"
+      afterMiddleware: compression
+    - name: ui5-middleware-livereload
+      afterMiddleware: compression

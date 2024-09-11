@@ -1,0 +1,29 @@
+<mvc:View
+    controllerName="sap.ui.demo.todo.controller.App"
+    displayBlock="true"
+    xmlns:webc="@ui5/webcomponents"
+    xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    core:require="{'iconAdd': '@ui5/webcomponents-icons/dist/add', 'iconDelete':'@ui5/webcomponents-icons/dist/delete', 'iconEdit':'@ui5/webcomponents-icons/dist/edit'}">
+
+    <webc:Title class="title" text="{i18n>app_title}"/>
+    <webc:Input id="newTodo" value="{/newTodo}" change=".addTodo" placeholder="{i18n>todo_input_placeholder}" width="100%"/>
+
+    <webc:List content="{/todos}">
+        <webc:ListItemCustom class="todoItems">
+            <webc:CheckBox checked="{completed}" change=".completeTodo"/>
+            <webc:Label text="{title}"/>
+            <webc:Button icon="edit" click=".editTodo"/>
+            <webc:Button icon="delete" design="Negative" click=".deleteTodo"/>
+        </webc:ListItemCustom>
+    </webc:List>
+    <webc:Dialog id="editDialog" headerText="{i18n>todo_dialog_edit_header}">
+        <webc:content>
+            <webc:Input value="{title}" id="editTodo" class="dialogTodoInput" change=".closeEdit"/>
+        </webc:content>
+        <webc:footer>
+            <webc:Button class="dialogCloseButton" design="Emphasized" text="{i18n>todo_dialog_close_button}" click=".closeEdit"/>
+        </webc:footer>
+    </webc:Dialog>
+</mvc:View>
